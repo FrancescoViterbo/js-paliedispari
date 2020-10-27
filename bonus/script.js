@@ -18,32 +18,37 @@ const palindromoOutput = document.getElementById("palindromo-output");
 const pariDispariOutput = document.getElementById("pari-dispari-output");
 
 /* Event Listeners */
-palindromoBtn.addEventListener("click", verificaPalindromo(palindromo.value));
+// palindromoBtn.addEventListener("click", verificaPalindromo(palindromo.value));
 pariDispariBtn.addEventListener("click", giocaPariODispari(pariDispari.value, numero.value));
 
-function verificaPalindromo(event, parola) {
+// function verificaPalindromo(parola) {
+//     palindromoOutput.innerHTML = "";
 
-    event.preventDefault();
+//     let parolaReversed = "";
+//     for (i = parola.length -1; i >= 0 ; i--) {
+//         parolaReversed = parolaReversed + parola[i];
+//     }
+//     if (parolaReversed === parola) {
+//         palindromoOutput.innerHTML = "la parola \"" + parola + "\" è un palindromo.";
+//     } else {
+//         palindromoOutput.innerHTML = "la parola \"" + parola + "\" non è un palindromo.";
+//     }
+// }
 
-    let parolaReversed = parola.charAt(-1);
-    for (i = parola.length -1; i >= 0 ; i--) {
-        parolaReversed = parolaReversed + parola[i];
-    }
-    console.log(parolaReversed);
-}
+function giocaPariODispari(scelta, numero) {
+    pariDispariOutput.innerHTML = "";
 
-function giocaPariODispari(e) {
-    e.preventDefault();
-
-    let numeroComputer = Math.floor(Math.random() * 5 + 1);
-    let risultatoValue = numero + numeroComputer;
+    let compNumb = Math.floor(Math.random() * 5 + 1);
+    let risultatoValue = numero + compNumb;
     let risultato = "";
     if (risultatoValue % 2 === 0) {
         risultato = "pari";
     } else {
         risultato = "dispari";
     }
-
-    console.log(risultato);
-    return risultato;
+    if (risultato === scelta) {
+        pariDispariOutput.innerHTML = "Hai scelto il numero " + numero + ". Il computer ha scelto il numero " + compNumb +". Hai vinto!";
+    } else {
+        pariDispariOutput.innerHTML = "Hai scelto il numero " + numero + ". Il computer ha scelto il numero " + compNumb +". hai perso!";
+    }
 }
