@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paliedispari</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Verifica palindromo</h2>
+    <form action="">
+        <label for="palindromo">Verifica se la parola è palindroma</label>
+        <input type="text" name="" id="palindromo" placeholder="Palindromo?">
+        <button id="palindromo-btn">Palindromo?</button>
+        <h3 id="palindromo-output"></h3>
+    </form>
+
+    <h2>Gioca a Pari o Dispari</h2>
+    <form action="">
+        <label for="pari-dispari">Pari o Dispari?</label>
+        <select name="" id="pari-dispari">
+            <option value="pari">Pari</option>
+            <option value="dispari">Dispari</option>
+        </select>
+        <label for="numero">Inserisci un numero</label>
+        <input type="number" name="" id="numero" placeholder="Inserisci un numero" minlength="1" maxlength="5" required>
+        <button id="pari-dispari-btn">Gioca!</button>
+        <h3 id="pari-dispari-output"></h3>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
