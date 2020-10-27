@@ -18,37 +18,42 @@ const palindromoOutput = document.getElementById("palindromo-output");
 const pariDispariOutput = document.getElementById("pari-dispari-output");
 
 /* Event Listeners */
-// palindromoBtn.addEventListener("click", verificaPalindromo(palindromo.value));
-pariDispariBtn.addEventListener("click", giocaPariODispari(pariDispari.value, numero.value));
+palindromoBtn.addEventListener("click", (event) => {verificaPalindromo(event, palindromo.value)});
+pariDispariBtn.addEventListener("click", (event) => {giocaPariODispari(event, pariDispari.value, numero.value)});
 
-// function verificaPalindromo(parola) {
-//     palindromoOutput.innerHTML = "";
+function verificaPalindromo(event, parola) {
+    event.preventDefault();
+    palindromoOutput.innerHTML = "";
+    
+    let parolaReversed = "";
+    for (i = parola.length -1; i >= 0 ; i--) {
+        parolaReversed = parolaReversed + parola[i];
+    }
+    if (parolaReversed === parola) {
+        palindromoOutput.innerHTML = "la parola \"" + parola + "\" è un palindromo.";
+    } else {
+        palindromoOutput.innerHTML = "la parola \"" + parola + "\" non è un palindromo.";
+    }
+    palindromo.value = "";
+}
 
-//     let parolaReversed = "";
-//     for (i = parola.length -1; i >= 0 ; i--) {
-//         parolaReversed = parolaReversed + parola[i];
-//     }
-//     if (parolaReversed === parola) {
-//         palindromoOutput.innerHTML = "la parola \"" + parola + "\" è un palindromo.";
-//     } else {
-//         palindromoOutput.innerHTML = "la parola \"" + parola + "\" non è un palindromo.";
-//     }
-// }
-
-function giocaPariODispari(scelta, numero) {
+function giocaPariODispari(event, scelta, numb) {
+    event.preventDefault();
     pariDispariOutput.innerHTML = "";
-
+    
     let compNumb = Math.floor(Math.random() * 5 + 1);
-    let risultatoValue = numero + compNumb;
+    let risultatoValue = parseInt(numb) + compNumb;
     let risultato = "";
+    
     if (risultatoValue % 2 === 0) {
         risultato = "pari";
     } else {
         risultato = "dispari";
     }
     if (risultato === scelta) {
-        pariDispariOutput.innerHTML = "Hai scelto il numero " + numero + ". Il computer ha scelto il numero " + compNumb +". Hai vinto!";
+        pariDispariOutput.innerHTML = "Hai scelto " + scelta.toUpperCase() + " ed il numero " + numb + ".<br> Il computer ha scelto il numero " + compNumb +".<br> Hai vinto!";
     } else {
-        pariDispariOutput.innerHTML = "Hai scelto il numero " + numero + ". Il computer ha scelto il numero " + compNumb +". hai perso!";
+        pariDispariOutput.innerHTML = "Hai scelto " + scelta.toUpperCase() + " ed il numero " + numb + ".<br> Il computer ha scelto il numero " + compNumb +".<br> Hai perso!";
     }
+    numero.value = "";
 }
