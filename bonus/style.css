@@ -7,6 +7,10 @@ form {
     text-align: center;
 }
 
-label {
+label, button {
     display: block;
+}
+
+button {
+    margin: 1rem auto;
 }
